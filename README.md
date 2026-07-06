@@ -1,32 +1,37 @@
-# React + TypeScript + Vite
+# REPL_app
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+智投金融 - 投资交易平台
 
-Currently, two official plugins are available:
+## 技术栈
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+React 18 + TypeScript + Vite + Ant Design Pro
 
-## React Compiler
+## 核心功能
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 行情看板：大盘指数、股票行情列表
+- 投资组合：持仓明细、盈亏分析、委托记录
+- 交易：买入/卖出委托、实时行情
+- 自选：自选股管理
 
-## Expanding the Oxlint configuration
+## 快速开始
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 项目结构
+
+```
+src/
+├── layouts/        # ProLayout 布局
+├── pages/          # 页面
+│   ├── dashboard/  # 行情看板
+│   ├── portfolio/  # 投资组合
+│   ├── trading/    # 交易
+│   └── watchlist/  # 自选
+├── api/            # Mock API
+├── store/          # Zustand 状态管理
+├── types/          # TypeScript 类型定义
+└── components/     # 公共组件
+```
