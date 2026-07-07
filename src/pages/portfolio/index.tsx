@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from '@tarojs/components';
-import { Tag, Skeleton } from '@nutui/nutui-react-taro';
+import { Tag } from '@nutui/nutui-react-taro';
 import { useStore } from '../../store';
 import './index.scss';
 
@@ -13,7 +13,7 @@ export default function PortfolioPage() {
   }, []);
 
   if (loading || !portfolio) {
-    return <View className="page"><Skeleton width="100%" height="200rpx" animated /></View>;
+    return <View className="page"><View className="skel-card" style={{ width: '100%', height: '200rpx' }} /></View>;
   }
 
   return (

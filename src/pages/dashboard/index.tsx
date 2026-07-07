@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Input } from '@tarojs/components';
-import { SearchBar, Tag, Skeleton } from '@nutui/nutui-react-taro';
+import { SearchBar, Tag } from '@nutui/nutui-react-taro';
 import Taro from '@tarojs/taro';
 import { useStore } from '../../store';
 import './index.scss';
@@ -26,7 +26,9 @@ export default function DashboardPage() {
     return (
       <View className="page">
         <View className="skeleton-row">
-          {[1,2,3,4].map(i => <Skeleton key={i} width="150rpx" height="120rpx" animated />)}
+          {[1,2,3,4].map(i => (
+            <View key={i} className="skel-card" />
+          ))}
         </View>
       </View>
     );

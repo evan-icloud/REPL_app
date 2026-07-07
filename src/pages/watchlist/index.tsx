@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from '@tarojs/components';
-import { Tag, Button, Skeleton, Dialog } from '@nutui/nutui-react-taro';
+import { Tag, Button } from '@nutui/nutui-react-taro';
 import Taro from '@tarojs/taro';
 import { useStore } from '../../store';
 import './index.scss';
@@ -14,19 +14,21 @@ export default function WatchlistPage() {
   }, []);
 
   if (loading) {
-    return <View className="page"><Skeleton width="100%" height="200rpx" animated /></View>;
+    return <View className="page"><View className="skel-card" style={{ width: '100%', height: '200rpx' }} /></View>;
   }
 
   const watchedStocks = stocks.filter(s => watchlist.includes(s.symbol));
   const otherStocks = stocks.filter(s => !watchlist.includes(s.symbol));
 
   const onRemove = (symbol: string, name: string) => {
-    Dialog.open({
+    Taro.showModal({
       title: '确认移出',
       content: `确定将 ${name} 移出自选吗？`,
-      onConfirm: () => {
-        toggleWatch(symbol);
-        Taro.showToast({ title: '已移出自选', icon: 'success' });
+      success: (res) => {
+        if (res.confirm) {
+          toggleWatch(symbol);
+          Taro.showToast({ title: '已移出自选', icon: 'success' });
+        }
       }
     });
   };

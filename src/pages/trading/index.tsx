@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Input, InputProps } from '@tarojs/components';
-import { Button, Tag, Toast, InputNumber, SearchBar } from '@nutui/nutui-react-taro';
+import { Button, Tag, InputNumber, SearchBar } from '@nutui/nutui-react-taro';
 import Taro from '@tarojs/taro';
 import { useStore } from '../../store';
 import type { Stock } from '../../types';
@@ -37,15 +37,16 @@ export default function TradingPage() {
   );
 
   const handleTrade = () => {
-    if (!selected) { Toast.show('请先选择股票'); return; }
-    if (!price || !quantity) { Toast.show('请输入价格和数量'); return; }
+    if (!selected) { Taro.showToast({ title: '请先选择股票', icon: 'none' }); return; }
+    if (!price || !quantity) { Taro.showToast({ title: '请输入价格和数量', icon: 'none' }); return; }
     const p = parseFloat(price);
     const q = parseInt(quantity);
-    if (isNaN(p) || isNaN(q) || p <= 0 || q < 100) { Toast.show('请输入有效数值'); return; }
+    if (isNaN(p) || isNaN(q) || p <= 0 || q < 100) { Taro.showToast({ title: '请输入有效数值', icon: 'none' }); return; }
     const amount = p * q;
-    Toast.show({
-      content: `${orderType === 'buy' ? '买入' : '卖出'}委托已提交\n${selected.name} ${q}股 @ ¥${p.toFixed(2)}\n总金额 ¥${amount.toFixed(2)}`,
-      duration: 3
+    Taro.showToast({
+      title: `${orderType === 'buy' ? '买入' : '卖出'}委托已提交 ${selected.name} ${q}股@¥${p.toFixed(2)}`,
+      icon: 'none',
+      duration: 3000
     });
     setPrice('');
     setQuantity('');
