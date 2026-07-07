@@ -8,6 +8,7 @@
  * - 保留原排版格式
  * - 可直接复制到模板使用
  * - 支持富文本编辑
+ * - 内置中文翻译
  */
 
 export { default as DocxEditor, type DocxEditorProps, type DocxEditorRef } from './DocxEditor';

@@ -8,7 +8,9 @@
 import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { renderAsync } from '@eigenpal/docx-editor-vue';
 import type { Document } from '@eigenpal/docx-editor-core';
+import { zhCN, deepMerge, en } from '@eigenpal/docx-editor-i18n';
 import '@eigenpal/docx-editor-vue/styles.css';
+import './toolbar.css';
 
 /**
  * 预先生成的最小空docx文件的base64编码
@@ -37,7 +39,7 @@ function getEmptyDocxBuffer(): ArrayBuffer {
 
 // Props接口定义
 export interface DocxEditorProps {
-  /** 文档数据 - ArrayBuffer, Uint8Array, Blob, or File */
+  /** 文档数据 */
   initialDocument?: ArrayBuffer | Uint8Array | Blob | File | null;
   /** 是否显示主工具栏 */
   showToolbar?: boolean;
@@ -112,7 +114,6 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
   author = 'User',
   mode = 'editing',
   onModeChange,
-  i18n,
   theme,
   colorMode = 'light',
   initialZoom = 1.0,
@@ -149,7 +150,7 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
         try {
           handleRef.current.destroy();
         } catch (e) {
-          // 忽略销毁错误
+          // 忽略
         }
         handleRef.current = null;
       }
@@ -165,6 +166,9 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
       if (cancelled || !containerRef.current) return;
 
       try {
+        // 合并中文翻译
+        const mergedI18n = deepMerge(en, zhCN);
+
         const options = {
           showToolbar,
           showFileOpen,
@@ -190,7 +194,7 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
           },
           onPrint,
           onOpen,
-          i18n,
+          i18n: mergedI18n as unknown as Parameters<typeof renderAsync>[2]['i18n'],
           theme,
         };
 
@@ -202,7 +206,6 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
           return;
         }
 
-        // 直接保存handle引用
         handleRef.current = handle;
       } catch (err) {
         if (cancelled) return;
@@ -219,7 +222,7 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
         try {
           handleRef.current.destroy();
         } catch (e) {
-          // 忽略销毁错误
+          // 忽略
         }
         handleRef.current = null;
       }
@@ -246,7 +249,7 @@ const DocxEditor = forwardRef<DocxEditorRef, DocxEditorProps>(({
   return (
     <div
       ref={containerRef}
-      className={className}
+      className={`${className || ''} ep-root`}
       style={{
         width: '100%',
         height: '100%',
