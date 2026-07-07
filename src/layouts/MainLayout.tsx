@@ -1,6 +1,6 @@
 import { ProLayout } from '@ant-design/pro-components';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { CrownOutlined, FundOutlined, ShoppingOutlined, StarOutlined } from '@ant-design/icons';
+import { CrownOutlined, FundOutlined, ShoppingOutlined, StarOutlined, FileTextOutlined } from '@ant-design/icons';
 
 const menuRoutes = {
   routes: [
@@ -8,6 +8,7 @@ const menuRoutes = {
     { path: '/portfolio', name: '投资组合', icon: <CrownOutlined /> },
     { path: '/trading', name: '交易', icon: <ShoppingOutlined /> },
     { path: '/watchlist', name: '自选', icon: <StarOutlined /> },
+    { path: '/doc-editor', name: '文档编辑', icon: <FileTextOutlined /> },
   ],
 };
 
