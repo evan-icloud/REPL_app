@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Input } from '@tarojs/components';
-import { SearchBar, Tag } from '@nutui/nutui-react-taro';
+import { Tag } from '@nutui/nutui-react-taro';
 import Taro from '@tarojs/taro';
 import { useStore } from '../../store';
 import './index.scss';
@@ -51,10 +51,11 @@ export default function DashboardPage() {
       </ScrollView>
 
       <View className="search-wrap">
-        <SearchBar
+        <Input
+          className="search-input"
           placeholder="搜索股票代码或名称"
           value={search}
-          onChange={(val) => setSearch(val)}
+          onInput={(e) => setSearch((e as any).detail?.value ?? '')}
         />
       </View>
 

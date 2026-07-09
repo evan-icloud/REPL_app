@@ -40,6 +40,14 @@
   margin-bottom: 20rpx;
 }
 
+.search-input {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #eee;
+}
+
 .stock-list {
   height: calc(100vh - 300rpx);
 }

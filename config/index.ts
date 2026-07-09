@@ -3,10 +3,14 @@ import devConfig from './dev';
 import prodConfig from './prod';
 
 export default {
+  projectName: 'invest-app-taro',
+  framework: 'react',
   logger: {
     quiet: false,
     stats: true
   },
+  sourceRoot: 'src',
+  outputRoot: 'dist',
   mini: {},
   h5: {},
   rn: {

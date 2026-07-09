@@ -14,11 +14,20 @@
     "build:android": "taro build --type rn --platform android",
     "build:ios": "taro build --type rn --platform ios"
   },
-  "browserslist": ["defaults", "not dead", "not ie 11", "not op_mini all", "Android >= 7", "iOS >= 11"],
+  "browserslist": [
+    "defaults",
+    "not dead",
+    "not ie 11",
+    "not op_mini all",
+    "Android >= 7",
+    "iOS >= 11"
+  ],
   "dependencies": {
     "@babel/runtime": "^7.21.0",
-    "@nutui/nutui-react-taro": "^2.6.0",
     "@nutui/icons-react-taro": "^1.0.0",
+    "@nutui/nutui-react-taro": "^2.6.0",
+    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native/metro-config": "^0.86.0",
     "@tarojs/components": "4.2.0",
     "@tarojs/helper": "4.2.0",
     "@tarojs/plugin-framework-react": "4.2.0",
@@ -34,11 +43,22 @@
     "@tarojs/shared": "4.2.0",
     "@tarojs/taro": "4.2.0",
     "@tarojs/taro-rn": "4.2.0",
+    "dayjs": "^1.11.0",
+    "metro": "^0.86.0",
+    "metro-core": "^0.86.0",
+    "metro-resolver": "^0.86.0",
+    "metro-runtime": "^0.86.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-native": "^0.74.0",
-    "zustand": "^4.5.0",
-    "dayjs": "^1.11.0"
+    "react-native-device-info": "^15.0.2",
+    "react-native-gesture-handler": "^2.16.2",
+    "react-native-reanimated": "^3.10.1",
+    "react-native-root-siblings": "^5.0.1",
+    "react-native-safe-area-context": "^4.10.5",
+    "react-native-screens": "^3.31.1",
+    "react-native-svg": "^15.2.0",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
@@ -55,7 +75,9 @@
     "@types/react": "^18.0.0",
     "@types/webpack-env": "^1.13.0",
     "babel-preset-taro": "4.2.0",
+    "metro-react-native-babel-preset": "^0.77.0",
     "react-refresh": "^0.14.0",
+    "stylelint": "^16.10.0",
     "typescript": "^5.4.0",
     "webpack": "^5.90.0"
   }
